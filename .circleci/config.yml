@@ -23,7 +23,9 @@ jobs:
       - checkout
       - run:
           name: Build windows-386
-          command: env GOOS=windows GOARCH=386 go build -o sheret-windows-386.exe src/sheret.go
+          command: |
+            go get github.com/pkg/browser
+            env GOOS=windows GOARCH=386 go build -o sheret-windows-386.exe src/sheret.go
       - store_artifacts:
           path: .
 
